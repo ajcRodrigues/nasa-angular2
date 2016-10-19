@@ -1,21 +1,34 @@
-<calendar (currentDate)="setSelectedDate($event)"></calendar>
 <section>
-  <h3 *ngIf="currentStatus === STATUS.NONE">Nenhuma foto encontrada.</h3>
-  <h3 *ngIf="currentStatus === STATUS.GETTING">Buscando fotos...</h3>
-  <h3 *ngIf="currentStatus === STATUS.DONE">{{ photos.length }} fotos encontradas para a data: {{ currentDate }}</h3>
+  <h4>
+    <calendar (currentDate)="setSelectedDate($event)"></calendar>
+    <span *ngIf="currentStatus === STATUS.NONE">Nenhuma foto encontrada.</span>
+    <span *ngIf="currentStatus === STATUS.GETTING">Buscando fotos...</span>
+    <span *ngIf="currentStatus === STATUS.DONE">Encontramos {{ albums.length }} fotos para a data selecionada.</span>
+  </h4>
 
   <section>
+    <ngb-pagination pageSize="1" [collectionSize]="albumSize" [(page)]="currentPosition" 
+        [maxSize]="5" 
+        [rotate]="true" 
+        [ellipses]="false" 
+        [boundaryLinks]="true"
+      >      
+    </ngb-pagination>
 
-    <article class="panel panel-default" *ngFor="let photo of photos">
+
+    <article class="panel panel-default" *ngIf="albums !== null">
       <figure class="image-center">
-        <img class="img-responsive img-rounded" [src] = "photo.img_src">
+        <img class="img-responsive img-rounded" [src] = "albums[currentPosition-1].img_src">
       </figure>
       <figcaption>
-        <h4>Foto id: {{ photo.id }} @ {{ photo.earth_date | date:'dd/MM/yyyy'}}</h4>
-        <p>Rover: {{ photo.rover.name }}, Câmera {{ photo.camera.full_name }} - ({{ photo.camera.name }})
+        <h4><strong>Foto id:</strong> {{ albums[currentPosition-1].id }} @ {{ albums[currentPosition-1].earth_date | date:'dd/MM/yyyy'}}</h4>
+        <p>
+          <strong>Rover:</strong> {{ albums[currentPosition-1].rover.name }}
+          <br>
+          <strong>Câmera:</strong> {{ albums[currentPosition-1].camera.full_name }} - ({{ albums[currentPosition-1].camera.name }})
+        <p>
       </figcaption>
     </article>
 
-  </section>
-  
+  </section>  
 </section>

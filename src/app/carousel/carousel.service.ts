@@ -18,7 +18,7 @@ export class CarouselService {
 
   }
 
-  getMarsPhotos(date) : Promise<any[]> {
+  getMarsAlbums(date) : Promise<any[]> {
     let url = this.NASA_BASE_URL + 'earth_date=' + date + '&api_key=' + this.API_KEY;
     
     // let url = 'https://jsonplaceholder.typicode.com/posts/1';

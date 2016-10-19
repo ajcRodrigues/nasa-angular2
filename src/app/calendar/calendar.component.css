@@ -1,0 +1,7 @@
+.calendar-inline {
+  display: inline-block;
+}
+
+.calendar-inline label {
+  font-weight: normal;
+}

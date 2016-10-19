@@ -9,8 +9,7 @@ const now = new Date();
 })
 export class CalendarComponent implements OnInit {
 
-
-  selectedDate = null;
+  selectedDate = '2015-06-03';
   @Output() currentDate = new EventEmitter();
 
 

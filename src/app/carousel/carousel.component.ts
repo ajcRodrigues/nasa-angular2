@@ -14,29 +14,31 @@ export class CarouselComponent implements OnInit {
   STATUS = {'NONE':0, 'GETTING':1, 'DONE':2};
   currentStatus = this.STATUS.NONE;
 
-  currentDate = '2015-06-03';
-  photos = null;
-  selectedPhoto = '';
+  selectedDate = '2015-06-03';
+  albums = null;
+  currentPosition = 1;
+  albumSize = 0;
 
 
   setSelectedDate(date) {
-    this.currentDate = date;
+    this.selectedDate = date;
     console.log(date);
     this.currentStatus = this.STATUS.GETTING;
-    this.getPhotos();
+    this.getAlbums();
   }
 
-  getPhotos() {
+  getAlbums() {
     let got = this.carouselService
-      .getMarsPhotos(this.currentDate)
+      .getMarsAlbums(this.selectedDate)
       .then( data => {
-          this.photos = data;
+          this.albums = data;
+          this.albumSize = data.length;
+          this.currentPosition = 1;
           this.currentStatus = this.STATUS.DONE;
           console.log('done!!');
       }).
       catch( err => {
         console.error(err);
-        //this.photos = null;
         this.currentStatus = this.STATUS.NONE;
       });
   }
@@ -44,7 +46,7 @@ export class CarouselComponent implements OnInit {
   constructor(private carouselService : CarouselService) { }
 
   ngOnInit() {
-    this.getPhotos();
+    this.getAlbums();
   }
 
 }
