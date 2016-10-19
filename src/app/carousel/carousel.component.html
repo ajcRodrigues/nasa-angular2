@@ -1,3 +1,4 @@
+<calendar (currentDate)="setSelectedDate($event)"></calendar>
 <section>
   <h3 *ngIf="currentStatus === STATUS.NONE">Nenhuma foto encontrada.</h3>
   <h3 *ngIf="currentStatus === STATUS.GETTING">Buscando fotos...</h3>

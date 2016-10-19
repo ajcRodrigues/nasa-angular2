@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CalendarComponent } from '../calendar/calendar.component';
 import { CarouselService } from './carousel.service';
 
 @Component({
@@ -16,6 +17,14 @@ export class CarouselComponent implements OnInit {
   currentDate = '2015-06-03';
   photos = null;
   selectedPhoto = '';
+
+
+  setSelectedDate(date) {
+    this.currentDate = date;
+    console.log(date);
+    this.currentStatus = this.STATUS.GETTING;
+    this.getPhotos();
+  }
 
   getPhotos() {
     let got = this.carouselService

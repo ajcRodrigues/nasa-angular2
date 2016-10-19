@@ -1,0 +1,24 @@
+<!-- <section>
+  <div>
+    <div style="border: 1px solid darkgray; display: inline-block; border-radius: 2px; padding: 10px 10px;">
+      <!~~  <ngb-datepicker [(ngModel)]="selectedDate"></ngb-datepicker> ~~ >
+      <ngb-datepicker (change)="setSelectedDate($event.target)"></ngb-datepicker>
+
+    </div>
+  </div>
+  <button class="btn btn-sm btn-outline-primary" (click)="selectToday()">Hoje</button>
+  <span>Data selecionada: {{ selectedDate | json }}</span>
+  
+  value="2015-06-03"
+
+</section> -->
+
+<section>
+  <label for="input-date">Selecione um data: 
+    <input type="date" name="input-date"
+      max="2015-06-03" min="2015-06-01"
+      (change)="setSelectedDate($event.target)" 
+    >
+  </label>
+  <span>Data atual: {{ selectedDate }}</span>
+</section>

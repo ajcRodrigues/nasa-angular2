@@ -7,12 +7,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { CarouselComponent } from './carousel/carousel.component';
-
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarouselComponent
+    CarouselComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
